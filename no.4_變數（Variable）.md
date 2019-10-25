@@ -18,16 +18,20 @@ double dblNum;   // 宣告一個倍精度浮點數變數
 現在比較鼓勵用清楚的名稱或助憶文字來表明變數作用，通常會以小寫字母作為開始，並在每個單字開始時第一個字母使用大寫，例如：
 ```
 int ageOfStudent;
-int ageOfTeacher;```
+int ageOfTeacher;
+```
+
 像這樣的名稱可以讓人一眼就看出這個變數的作用，還可以考慮用底線來區隔變數中的每個字面，例如：
 ```
 int age_of_student;
-int age_of_teacher;```
+int age_of_teacher;
+```
 在 C 中宣告一個變數，就會配置一塊記憶體空間給變數，空間長度依宣告時的資料型態而定，被配置的這塊空間中原先可能就有資料，也因此變數在宣告後的值是不可預期的，所以應該在在變數宣告後初始其值，可以使用指定運算子（Assignment operator）= 來指定變數的值，例如：
 ```
 int ageOfStudent = 0;
 double scoreOfStudent = 0.0;
-char levelOfStudent = 'A';```
+char levelOfStudent = 'A';
+```
 這邊也看到如何指定字元給字元變數，字元在指定時需使用引數 '' 來包括，在宣告變數之後，可以直接使用變數名稱來取得儲存的值，下面這個程式是個簡單的示範：
 ```
 #include <stdio.h>
@@ -47,30 +51,35 @@ int main(void) {
     printf("%d\t%.2f\t%c\n", ageOfStudent, scoreOfStudent, levelOfStudent);
 
     return 0;
-}```
+}
+```
 在這個程式中首先宣告變數，但並沒有初始其值，所以第一次顯示時會出現不可預期的資料，而在指定變數的值之後，顯示變數值時就會出現指定的資料了，執行結果如下所示：
 ```
 年級      得分          等級
 32767   0.000000    63
 
 年級      得分          等級
-5       80.00        B```
+5       80.00        B
+```
 在 printf() 中，針對浮點數的部份，使用格式指定字 %f，其中再加上 .2，表示顯示浮點數時只顯示至小數後第二位，更多的格式指定碼之使用，將在 printf() 與 scanf() 中介紹。
 
 也可以在使用宣告變數後，使用指定運算子將變數的值初始為 0：
 ```
 int ageForStudent = 5;
 double scoreForStudent = 80.0;
-char levelForStudent = 'B';```
+char levelForStudent = 'B';
+```
 有時候一但將數值指定給變數之後，就不允許再重新指定給同一變數，這時可以在宣告變數時使用 const 關鍵字來限定，若程式中有其它程式碼試圖重新設定變數，編譯器會先檢查出這個錯誤，例如：
 ```
 const double PI = 3.14; 
 PI = 3.14159;```
 這一段程式碼中的 maxNum 變數使用了 const 來限定，所以在指定為 10 之後，就不可以再指定值給它，所以第二次指定會被編譯器指出錯誤，在 gcc 編譯器下，會出現這樣的錯誤訊息：
 ```
-assignment of read-only variable `PI'```
+assignment of read-only variable `PI'
+```
 使用 const 來限定變數，通常就是不希望其它的程式碼來變動它的值，例如用於迴圈計數次數的指定（迴圈之後就會學到），或是像圓周率PI的指定。
 
 如果要宣告無號的整數變數，則可以加上unsigned關鍵字，例如：
 ```
-unsigned int i;```
+unsigned int i;
+```
